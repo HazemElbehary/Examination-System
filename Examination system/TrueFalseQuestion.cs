@@ -25,9 +25,9 @@
             } while (!int.TryParse(Console.ReadLine(), out CorrectAnswer) || (CorrectAnswer != 1 && CorrectAnswer != 2));
 
             AnswerList[0] = new Answers(1, "True");
-            AnswerList[0] = new Answers(2, "False");
+            AnswerList[1] = new Answers(2, "False");
 
-            return new Question(HeaderOfQuestion, BodyOfQuestion, Mark, AnswerList, RightAnswer);
+            return new Question(HeaderOfQuestion, BodyOfQuestion, Mark, AnswerList, AnswerList[CorrectAnswer]);
         }
     }
 }
