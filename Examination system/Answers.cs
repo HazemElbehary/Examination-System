@@ -5,7 +5,7 @@
         #region Attributes
         int answerId;
         string answerText;
-        static int AnswerCounter = 0; 
+        public static int AnswerCounter = 0; 
         #endregion
 
         #region Constructors
