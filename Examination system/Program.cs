@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //Subject subject01 = new Subject(1, "C#");
+            //subject01.CreateExam();
         }
     }
 }
