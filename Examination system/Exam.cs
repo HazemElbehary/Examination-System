@@ -1,4 +1,6 @@
-﻿namespace Examination_system
+﻿using System.Diagnostics;
+
+namespace Examination_system
 {
     abstract class Exam
     {
@@ -23,7 +25,7 @@
         public int TimeOfExam
         {
             get { return timeOfExam; }
-            set { timeOfExam = value <= 900 ? 900 : value; }
+            set { timeOfExam = value <= 0 ? 1 : value; }
         }
 
         public int NumOfQuestions
@@ -48,12 +50,18 @@
 
         #region Methods
 
-        public decimal TestUser()
+        public decimal TestUser(Stopwatch SW)
         {
             decimal Points = 0;
             Console.WriteLine("\n======================\n");
             for (int i = 0; i < questions.Length; i++)
             {
+                if (SW.Elapsed.TotalSeconds >= TimeOfExam)
+                {
+                    Console.WriteLine($"\nSorry Time Is Over :(\n");
+                    break;
+                }
+
                 int a;
                 do
                 {
@@ -67,7 +75,7 @@
             return Points;
         }
 
-        public abstract void ShowExam();
+        public abstract void ShowExam(Stopwatch SW);
 
         #endregion
 

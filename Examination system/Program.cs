@@ -19,7 +19,7 @@ namespace Examination_system
             {
                 Stopwatch SW = new Stopwatch();
                 SW.Start();
-                subject01.ExamOfTheSubject.ShowExam();
+                subject01.ExamOfTheSubject.ShowExam(SW);
                 Console.WriteLine($"The Elapsed Time = {SW.Elapsed}");
             }
 

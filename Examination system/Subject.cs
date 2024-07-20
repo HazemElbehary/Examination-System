@@ -44,7 +44,7 @@
             int TimeOfExam;
             do
             {
-                Console.WriteLine("Please Enter The Time Of The Exam");
+                Console.WriteLine("Please Enter The Time Of The Exam In Second Format");
             } while (!int.TryParse(Console.ReadLine(), out TimeOfExam) || (TimeOfExam <= 0));
 
 

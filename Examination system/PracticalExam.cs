@@ -1,4 +1,6 @@
-﻿namespace Examination_system
+﻿using System.Diagnostics;
+
+namespace Examination_system
 {
     internal class PracticalExam : Exam
     {
@@ -6,9 +8,9 @@
         {
         }
 
-        public override void ShowExam()
+        public override void ShowExam(Stopwatch SW)
         {
-            decimal Grade = base.TestUser();
+            decimal Grade = base.TestUser(SW);
 
             Console.WriteLine("\n======================\n");
             for (int i = 0; i < Questions.Length; i++)
