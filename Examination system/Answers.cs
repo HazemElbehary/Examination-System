@@ -5,16 +5,13 @@
         #region Attributes
         int answerId;
         string answerText;
-        public static int AnswerCounter = 0; 
         #endregion
 
         #region Constructors
         public Answers(int answerId, string answerText)
         {
-
             AnswerId = answerId;
             AnswerText = answerText;
-            AnswerCounter++;
         } 
         #endregion
 
@@ -24,7 +21,7 @@
             get { return answerId; }
             set
             {
-                answerId = value < 1 ? AnswerCounter : value;
+                answerId = value < 1 ? 1 : value;
             }
         }
 

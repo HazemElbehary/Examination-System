@@ -1,4 +1,6 @@
-﻿namespace Examination_system
+﻿using System.Diagnostics;
+
+namespace Examination_system
 {
     internal class Program
     {
@@ -6,7 +8,7 @@
         {
             Subject subject01 = new Subject(1, "C#");
             subject01.CreateExam();
-            
+
             int StartExam = 0;
             do
             {
@@ -15,11 +17,12 @@
 
             if (StartExam == 1)
             {
-                if (subject01.TypeOfExam == 1)
-                    Console.WriteLine($"You Grade = {subject01.ExamOfTheSubject.ShowExam()}");
-                else
-                    subject01.ExamOfTheSubject.ShowExam();
+                Stopwatch SW = new Stopwatch();
+                SW.Start();
+                subject01.ExamOfTheSubject.ShowExam();
+                Console.WriteLine($"The Elapsed Time = {SW.Elapsed}");
             }
+
         }
     }
 }

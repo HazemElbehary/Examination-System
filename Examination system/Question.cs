@@ -1,6 +1,6 @@
 ﻿namespace Examination_system
 {
-    internal class Question
+    internal abstract class Question
     {
         #region Attributes
         string headerOfQuestion;
@@ -13,7 +13,7 @@
         #region Constructors
         public Question()
         {
-            
+
         }
         public Question(string headerOfQuestion, string bodyOfQuestion, decimal mark, Answers[] answerList, Answers rightAnswer)
         {
@@ -30,7 +30,7 @@
         public string HeaderOfQuestion
         {
             get { return headerOfQuestion; }
-            set { headerOfQuestion = value ?? string.Empty; }
+            set { headerOfQuestion = value ?? "No Question"; }
         }
 
         public string BodyOfQuestion
@@ -48,7 +48,7 @@
         public Answers[] AnswerList
         {
             get { return answerList; }
-            set { answerList = value ?? [new Answers(Answers.AnswerCounter, "No Answer Exist")]; }
+            set { answerList = value ?? [new Answers(1, "No Answer Exist")]; }
         }
 
         public Answers RightAnswer
@@ -59,6 +59,30 @@
         #endregion
 
         #region Methods
+        public abstract Question CreateQuestion();
+        protected void GatherCommonQuestionDetails() 
+        {
+            do
+            {
+                Console.WriteLine($"Please Enter The Header Of Question");
+                HeaderOfQuestion = Console.ReadLine();
+            } while (HeaderOfQuestion == string.Empty);
+
+            do
+            {
+                Console.WriteLine($"Please Enter The Body Of Question");
+                BodyOfQuestion = Console.ReadLine();
+            } while (BodyOfQuestion == string.Empty);
+
+            decimal M;
+            do
+            {
+                Console.WriteLine($"Please Enter The Mark Of Question");
+            } while (!decimal.TryParse(Console.ReadLine(), out M) || (M <= 0));
+
+            Mark = M;
+        }
+
         public override string ToString()
         {
             string QuestionItSelf = HeaderOfQuestion + "\n" + BodyOfQuestion;

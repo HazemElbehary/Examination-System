@@ -2,20 +2,26 @@
 {
     internal class Subject
     {
+        #region Attributes
         int SubId;
         string SubName;
-        //Exam ExamOfTheSubject;
+        //Exam ExamOfTheSubject; 
+        #endregion
 
+        #region Properties
         public Exam ExamOfTheSubject { get; set; }
-        public int TypeOfExam { get; set; }
+        //public int TypeOfExam { get; set; } 
+        #endregion
 
+        #region Constructor
         public Subject(int SubId, string SubName)
         {
             this.SubId = SubId;
             this.SubName = SubName;
         }
+        #endregion
 
-
+        #region Methods
         public void CreateExam()
         {
             // Read The Type Of Exam Practical Exam OR Final
@@ -25,8 +31,6 @@
                 Console.WriteLine("Please Enter The Type Of The Exam    1.Final Exam    2.Practical Exam");
             } while (!int.TryParse(Console.ReadLine(), out TypeOfExam) || (TypeOfExam != 1 && TypeOfExam != 2));
 
-            //
-            this.TypeOfExam = TypeOfExam;
 
             // Read The Number Of Questions
             int NumOfQuestions;
@@ -35,8 +39,6 @@
                 Console.WriteLine("Please Enter The Number Of The Questoins");
             } while (!int.TryParse(Console.ReadLine(), out NumOfQuestions) || (NumOfQuestions <= 0));
 
-            // Create Are Of questions 
-            Question[] questions = new Question[NumOfQuestions];
 
             // Read The Time Of Exam
             int TimeOfExam;
@@ -45,12 +47,16 @@
                 Console.WriteLine("Please Enter The Time Of The Exam");
             } while (!int.TryParse(Console.ReadLine(), out TimeOfExam) || (TimeOfExam <= 0));
 
+
+            // Create Array Of questions 
+            Question[] questions = new Question[NumOfQuestions];
+
             // Final Exam
             if (TypeOfExam == 1)
             {
                 for (int i = 0; i < NumOfQuestions; i++)
                 {
-                    // Read The Type Of Question {i+1}
+                    // Read Type Of Question {i+1}
                     int TOfQ;
                     do
                     {
@@ -59,12 +65,12 @@
 
                     if (TOfQ == 1)
                     {
-                        TrueFalseQuestion trueFalseQuestion = new TrueFalseQuestion("", "", 0, null, null);
+                        TrueFalseQuestion trueFalseQuestion = new TrueFalseQuestion();
                         questions[i] = trueFalseQuestion.CreateQuestion();
                     }
                     else
                     {
-                        MCQQuestion mCQQuestion = new MCQQuestion("", "", 0, null, null);
+                        MCQQuestion mCQQuestion = new MCQQuestion();
                         questions[i] = mCQQuestion.CreateQuestion();
                     }
                 }
@@ -75,12 +81,17 @@
             {
                 for (int i = 0; i < NumOfQuestions; i++)
                 {
-                    MCQQuestion mCQQuestion = new MCQQuestion("", "", 0, null, null);
+                    MCQQuestion mCQQuestion = new MCQQuestion();
                     questions[i] = mCQQuestion.CreateQuestion();
                 }
             }
 
-            ExamOfTheSubject = new Exam(TimeOfExam, NumOfQuestions, questions);
-        }
+            if (TypeOfExam == 1)
+                ExamOfTheSubject = new FinalExam(TimeOfExam, NumOfQuestions, questions, TypeOfExam);
+            else
+                ExamOfTheSubject = new PracticalExam(TimeOfExam, NumOfQuestions, questions, TypeOfExam);
+
+        } 
+        #endregion
     }
 }
