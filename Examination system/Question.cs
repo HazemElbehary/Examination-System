@@ -11,6 +11,10 @@
         #endregion
 
         #region Constructors
+        public Question()
+        {
+            
+        }
         public Question(string headerOfQuestion, string bodyOfQuestion, decimal mark, Answers[] answerList, Answers rightAnswer)
         {
             HeaderOfQuestion = headerOfQuestion;
@@ -57,15 +61,14 @@
         #region Methods
         public override string ToString()
         {
-            string QuestionItSelf = HeaderOfQuestion + BodyOfQuestion;
+            string QuestionItSelf = HeaderOfQuestion + "\n" + BodyOfQuestion;
             string Answers = "";
             for (int i = 0; i < AnswerList.Length; i++)
             {
-                Answers += AnswerList[i] + "\n";
+                Answers += $"{i+1}. " + AnswerList[i] + "\n";
             }
             return QuestionItSelf + "\n" + Answers;
         }
-
         #endregion
     }
 }

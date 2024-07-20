@@ -9,6 +9,10 @@
         #endregion
 
         #region Constructors
+        public Exam()
+        {
+            
+        }
         public Exam(int timeOfExam, int numOfQuestions, Question[] questions)
         {
             TimeOfExam = timeOfExam;
@@ -41,14 +45,36 @@
         public decimal ShowExam()
         {
             decimal Points = 0;
+            Console.WriteLine("\n======================\n");
             for (int i = 0; i < questions.Length; i++)
             {
-                Console.WriteLine(questions[i]);
-                int.TryParse(Console.ReadLine(), out int a);
+                int a;
+                do
+                {
+                    Console.WriteLine(questions[i]);
+                } while (!int.TryParse(Console.ReadLine(), out a) || (a != 1 && a != 2 && (a >= questions[i].AnswerList.Length || a < 1)));
+                
                 Points += (a == questions[i].RightAnswer.AnswerId) ? questions[i].Mark : 0 ;
+                Console.WriteLine("\n======================\n");
             }
+            Console.WriteLine("\n======================\n");
+
+            ShowQuestionsWithRightAnswer();
             return Points;
         }
+
+        void ShowQuestionsWithRightAnswer()
+        {
+            Console.WriteLine("\n======================\n");
+            for (int i = 0; i < questions.Length; i++)
+            {
+                Console.WriteLine(questions[i].HeaderOfQuestion);
+                Console.WriteLine(questions[i].BodyOfQuestion);
+                Console.WriteLine($"Right Answer : {questions[i].RightAnswer}\n");
+            }
+            Console.WriteLine("\n======================\n");
+        }
+
         #endregion
 
     }
