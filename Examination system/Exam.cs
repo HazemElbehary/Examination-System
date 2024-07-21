@@ -11,16 +11,6 @@ namespace Examination_system
         int typeOfExam;
         #endregion
 
-        #region Constructors
-        public Exam(int timeOfExam, int numOfQuestions, Question[] questions, int typeOfExam)
-        {
-            TimeOfExam = timeOfExam;
-            NumOfQuestions = numOfQuestions;
-            Questions = questions;
-            TypeOfExam = typeOfExam;
-        }
-        #endregion
-
         #region Properties
         public int TimeOfExam
         {
@@ -45,6 +35,16 @@ namespace Examination_system
         {
             get { return typeOfExam; }
             set { typeOfExam = value == 1 ? value : value == 2 ? value : 1 ; }
+        }
+        #endregion
+
+        #region Constructors
+        public Exam(int timeOfExam, int numOfQuestions, Question[] questions, int typeOfExam)
+        {
+            TimeOfExam = timeOfExam;
+            NumOfQuestions = numOfQuestions;
+            Questions = questions;
+            TypeOfExam = typeOfExam;
         }
         #endregion
 

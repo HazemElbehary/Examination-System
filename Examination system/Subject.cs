@@ -5,12 +5,10 @@
         #region Attributes
         int SubId;
         string SubName;
-        //Exam ExamOfTheSubject; 
         #endregion
 
         #region Properties
         public Exam ExamOfTheSubject { get; set; }
-        //public int TypeOfExam { get; set; } 
         #endregion
 
         #region Constructor
