@@ -31,19 +31,12 @@
 
 
             // Read The Number Of Questions
-            int NumOfQuestions;
-            do
-            {
-                Console.WriteLine("Please Enter The Number Of The Questoins");
-            } while (!int.TryParse(Console.ReadLine(), out NumOfQuestions) || (NumOfQuestions <= 0));
+            int NumOfQuestions = ValidateInputs.PromptForPositiveInt("Please Enter The Number Of The Questoins");
 
 
             // Read The Time Of Exam
-            int TimeOfExam;
-            do
-            {
-                Console.WriteLine("Please Enter The Time Of The Exam In Second Format");
-            } while (!int.TryParse(Console.ReadLine(), out TimeOfExam) || (TimeOfExam <= 0));
+            int TimeOfExam = ValidateInputs.PromptForPositiveInt("Please Enter The Time Of The Exam In Second Format");
+
 
 
             // Create Array Of questions 

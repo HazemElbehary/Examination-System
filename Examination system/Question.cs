@@ -62,25 +62,9 @@
         public abstract Question CreateQuestion();
         protected void GatherCommonQuestionDetails() 
         {
-            do
-            {
-                Console.WriteLine($"Please Enter The Header Of Question");
-                HeaderOfQuestion = Console.ReadLine();
-            } while (HeaderOfQuestion == string.Empty);
-
-            do
-            {
-                Console.WriteLine($"Please Enter The Body Of Question");
-                BodyOfQuestion = Console.ReadLine();
-            } while (BodyOfQuestion == string.Empty);
-
-            decimal M;
-            do
-            {
-                Console.WriteLine($"Please Enter The Mark Of Question");
-            } while (!decimal.TryParse(Console.ReadLine(), out M) || (M <= 0));
-
-            Mark = M;
+            HeaderOfQuestion = ValidateInputs.PromptForNonEmptyString("Please Enter The Header Of Question");
+            BodyOfQuestion = ValidateInputs.PromptForNonEmptyString("Please Enter The Body Of Question");
+            Mark = ValidateInputs.PromptForPositiveDecimal("Please Enter The Mark Of Question");
         }
 
         public override string ToString()
