@@ -35,5 +35,16 @@
             } while (!int.TryParse(Console.ReadLine(), out value) || value <= 0);
             return value;
         }
+
+        // Read 1 Or 2 From User
+        static public int PromptForOneORTwoNumber(string message)
+        {
+            int value;
+            do
+            {
+                Console.WriteLine(message);
+            } while (!int.TryParse(Console.ReadLine(), out value) || (value != 1 && value != 2));
+            return value;
+        }
     }
 }
